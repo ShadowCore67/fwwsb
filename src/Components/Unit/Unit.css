@@ -1,0 +1,36 @@
+.unit-container {
+    border-bottom: 1px solid black;
+    text-align: left;
+}
+
+.object {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+    margin: 1%;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+@media (max-width: 800px) {
+    .object {
+        display: grid;
+        grid-template-columns: 90% 10%;
+        align-items: center;
+        margin: 1%;
+        font-weight: bold;
+        font-size: 18px;
+    }
+}
+
+.add-button {
+    font-size: 24px;
+    padding: 0;
+}
+
+@media (max-width: 800px) {
+    .add-button {
+        font-size: 18px;
+        padding: 0;
+    }
+}

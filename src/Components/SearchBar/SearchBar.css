@@ -1,0 +1,19 @@
+.info-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    border-bottom: 1px solid black;
+    grid-column: 1 / 4;
+    height: 3rem;
+}
+
+.faction-filter {
+    width: 50%;
+    margin: 5px;
+}
+
+.search {
+    width: 50%;
+    margin: 5px;
+}

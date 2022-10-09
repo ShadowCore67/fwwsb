@@ -1,0 +1,145 @@
+.unit-container {
+    border-bottom: 1px solid black;
+    text-align: left;
+}
+
+.player-unit {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) 5%;
+    grid-template-rows: repeat(2, 1fr);
+    margin: 0.5%;
+}
+
+@media (max-width: 800px) {
+    .player-unit {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        margin: 0.5%;
+    }
+}
+
+.unit-name {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+@media (max-width: 800px) {
+    .unit-name {
+        font-weight: bold;
+        font-size: 18px;
+    }
+}
+
+.side-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 6;
+    text-align: center;
+    margin: 1px;
+    padding: 0;
+    font-size: 24px;
+}
+
+@media (max-width: 800px) {
+    .side-button {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        grid-column: auto;
+        text-align: center;
+        margin: 1px;
+        padding: 0;
+        font-size: 24px;
+    }
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    margin: 5px;
+}
+
+@media (max-width: 800px) {
+    .item {
+        display: grid;
+        grid-template-columns: 90% 10%;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 800px) {
+    .item-container {
+        grid-column: 1 / 9;
+    }
+}
+
+.remove-item {
+    cursor: pointer;
+    float: right;
+}
+
+.upgrade-button {
+    margin: 1px;
+}
+
+@media (max-width: 800px) {
+    .upgrade-button {
+        margin: 1px;
+        padding: 0;
+        grid-column: 1 / 9;
+    }
+}
+
+.unit-title {
+    grid-column: 1 / 4;
+}
+
+@media (max-width: 800px) {
+    .unit-title {
+        grid-column: 1 / 8;
+    }
+}
+
+.checkbox {
+    margin-left: 10px;
+}
+
+.more-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 8;
+    text-align: center;
+    margin: 1px;
+    padding: 0;
+}
+
+.pop-up {
+    background-color: white;
+    min-width: fit-content;
+    font-family: 'Share Tech Mono';
+}
+
+.remove-item-container {
+    display: flex;
+    justify-content: center;
+}
+
+.bar-item {
+    float: left;
+}
+
+.pop-up-item {
+    padding: 1%;
+}
+
+.hover-image {
+    display: none;
+}
+
+.hover-image:hover {
+    display: block;
+    position: fixed;
+}

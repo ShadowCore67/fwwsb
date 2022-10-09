@@ -1,0 +1,30 @@
+.container {
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+    background-color: lightgray;
+    height: auto;
+    max-width: none;
+    padding: 0;
+}
+
+@media (max-width: 800px) {
+    .container {
+        display: grid;
+        grid-template-columns: 100%;
+        background-color: lightgray;
+        height: auto;
+        max-width: none;
+        padding: 0;
+    }
+}
+
+.grid-item {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+@media (max-width: 800px) {
+    .mobile-container {
+        display: none;
+    }
+}

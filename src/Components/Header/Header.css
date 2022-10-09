@@ -1,0 +1,31 @@
+.header {
+    font-weight: bold;
+    font-size: 40px;
+    background-color: black;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+@media (max-width: 800px) {
+    .header {
+        font-weight: bold;
+        font-size: 24px;
+        background-color: black;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+.title {
+    margin: 0px;
+    color: white;
+    text-decoration: none;
+}
+
+.title:hover {
+    color: white;
+}
