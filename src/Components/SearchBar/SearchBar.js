@@ -6,14 +6,14 @@ const SearchBar = (props) => {
   return (
     <div className='info-bar'>
         <Form.Select hidden={!props.unitFilter} className='faction-filter' onChange={(e) => props.filterFaction(e.target.value)}>
-            <option value=''>Faction Filter</option>
+            <option value=''>Filter</option>
             <option value='Brotherhood of Steel'>Brotherhood of Steel</option>
             <option value="Caesar's Legion">Caesar's Legion</option>
             <option value='Children of Atom'>Children of Atom</option>
             <option value='Creatures'>Creatures</option>
             <option value='Enclave'>Enclave</option>
             <option value='Gunners'>Gunners</option>
-            <option value='Institue'>Institute</option>
+            <option value='Institute'>Institute</option>
             <option value='NCR'>NCR</option>
             <option value='Raiders'>Raiders</option>
             <option value='Railroad'>Railroad</option>
@@ -21,8 +21,8 @@ const SearchBar = (props) => {
             <option value='Super Mutants'>Super Mutants</option>
             <option value='Survivors'>Survivors</option>
         </Form.Select>
-        <Form.Select hidden={props.unitFilter} className='faction-filter' onChange={(e) => props.filterCategory(e.target.value)}>
-            <option value=''>Item Filter</option>
+        <Form.Select hidden={props.unitFilter} className='faction-filter' onChange={(e) => props.filterType(e.target.value)}>
+            <option value=''>Filter</option>
             <option value='rifle'>Rifles</option>
             <option value='pistol'>Pistols</option>
             <option value='heavy'>Heavy</option>

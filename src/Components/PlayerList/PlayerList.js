@@ -28,7 +28,9 @@ const PlayerList = (props) => {
       <div className='grid-item'>
         <div className='caps-bar'>
           <span className='bar-item'>{listCost} caps</span>
-          <Button variant='secondary' className='add-unit-button mobile-button' onClick={() => props.mobileShowObjects()}>Add Units</Button>
+          {props.isMobile ? <Button className='add-unit-button material-button' onClick={() => props.mobileShowObjects()}><span className="material-symbols-outlined">add</span></Button> : <></>}
+          {props.isMobile ? <Button className='material-button' onClick={() => props.downloadTextList()}><span className="material-symbols-outlined">download</span></Button> : <></>}
+          <Button variant='danger' className='mobile-button delete' onClick={() => props.deleteList()}><span className="material-symbols-outlined">delete</span></Button>
         </div>
         {unitList}
       </div>

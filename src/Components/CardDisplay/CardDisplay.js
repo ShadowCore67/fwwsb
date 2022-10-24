@@ -16,10 +16,10 @@ const CardDisplay = (props) => {
   return (
     <div className='grid-item'>
       <div className='export-bar'>
-        <Button variant='secondary' onClick={() => props.downloadTextList()}>Download Text List</Button>
+        <Button className='material-button' onClick={() => props.downloadTextList()}>Download Text List</Button>
       </div>
       <div className='display'>
-        <Button hidden={!props.isMobile} variant='secondary' className='sticky-top' onClick={() => props.mobileHideImages()}>Return to List</Button>
+        <Button hidden={!props.isMobile} className='material-button sticky-top' onClick={() => props.mobileHideImages()}>Return to List</Button>
         <img className='unit-card' src={'images/' + props.imageList[0]} alt='card'></img>
         {images}
       </div>

@@ -22,15 +22,3 @@
         font-size: 18px;
     }
 }
-
-.add-button {
-    font-size: 24px;
-    padding: 0;
-}
-
-@media (max-width: 800px) {
-    .add-button {
-        font-size: 18px;
-        padding: 0;
-    }
-}

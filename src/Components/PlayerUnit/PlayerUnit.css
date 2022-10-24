@@ -82,10 +82,14 @@
 
 .upgrade-button {
     margin: 1px;
+    background-color: darkblue;
+    border: none;
 }
 
 @media (max-width: 800px) {
     .upgrade-button {
+        background-color: darkblue;
+        border: none;
         margin: 1px;
         padding: 0;
         grid-column: 1 / 9;
