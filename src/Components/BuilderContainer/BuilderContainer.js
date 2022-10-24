@@ -166,17 +166,19 @@ const BuilderContainer = (props) => {
     let arr = [];
 
     if(unit !== null){
-      arr.push(unit.name.toLowerCase().replace(/[^a-zA-z\d]|\s/g, '') + '.png');
+      arr.push(unit.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png');
 
       if(unit.isHeroic){
         arr.push('heroic.png');
       }
 
-      unit.weapons.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d]|\s/g, '') + '.png'));
-      unit.armor.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d]|\s/g, '') + '.png'));
-      unit.mods.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d]|\s/g, '') + '.png'));
-      unit.consumables.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d]|\s/g, '') + '.png'));
-      unit.perks.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d]|\s/g, '') + '.png'));
+      unit.weapons.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'));
+      unit.armor.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
+      unit.mods.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
+      unit.consumables.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
+      unit.perks.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
+
+      console.log(arr);
     }
     else{
       arr.push('default.png');
