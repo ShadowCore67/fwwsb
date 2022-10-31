@@ -12,11 +12,11 @@ const ObjectList = (props) => {
     const [type, setType] = useState('');
 
     useEffect(() => {
-        fetch("http://localhost:8080/units")
+        fetch("https://fwwsb-api-po8bv.ondigitalocean.app/units")
             .then((response) => response.json())
             .then((data) => setUnits(data));
 
-        fetch("http://localhost:8080/items")
+        fetch("https://fwwsb-api-po8bv.ondigitalocean.app/items")
             .then((response) => response.json())
             .then((data) => setItems(data));
     }, []);
