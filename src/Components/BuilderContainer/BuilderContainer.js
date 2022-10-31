@@ -12,7 +12,7 @@ const BuilderContainer = (props) => {
   const [list, setList] = useState([]);
   
   function addUnit(unit){
-    setList(arr => [...arr, unit]);
+    setList(arr => [...arr, JSON.parse(JSON.stringify(unit))]);
     buildImageList(unit);
   }
 
@@ -30,6 +30,10 @@ const BuilderContainer = (props) => {
     }
 
     buildImageList(null);
+  }
+
+  function deleteList(){
+    setList([]);
   }
   
   function addHeroic(unitIndex){
@@ -54,7 +58,7 @@ const BuilderContainer = (props) => {
       case 'heavy':
       case 'pistol':
       case 'melee':
-      case 'throwable':
+      case 'thrown':
         arr[unitIndex].weapons.push(item);
         break;
       case 'armor':
@@ -64,15 +68,19 @@ const BuilderContainer = (props) => {
         break;
       case 'rifle mod':
       case 'pistol mod':
+      case 'rifle/pistol mod':
+      case 'heavy mod':
       case 'melee mod':
       case 'armor mod':
       case 'power armor mod':
+      case 'creature mod':
+      case 'robot mod':
         arr[unitIndex].mods.push(item);
         break;
       case 'food':
       case 'alcohol':
       case 'chem':
-      case 'equipment':
+      case 'gear':
         arr[unitIndex].consumables.push(item);
         break;
       case 'perk':
@@ -96,7 +104,7 @@ const BuilderContainer = (props) => {
       case 'heavy':
       case 'pistol':
       case 'melee':
-      case 'throwable':
+      case 'thrown':
         arr[unitIndex].weapons = arr[unitIndex].weapons.filter((weapon, index) => index !== itemIndex);
         break;
       case 'armor':
@@ -106,19 +114,23 @@ const BuilderContainer = (props) => {
         break;
       case 'rifle mod':
       case 'pistol mod':
+      case 'rifle/pistol mod':
+      case 'heavy mod':
       case 'melee mod':
       case 'armor mod':
       case 'power armor mod':
+      case 'creature mod':
+      case 'robot mod':
         arr[unitIndex].mods = arr[unitIndex].mods.filter((mod, index) => index !== itemIndex);
         break;
       case 'food':
       case 'alcohol':
       case 'chem':
-      case 'equipment':
+      case 'gear':
         arr[unitIndex].consumables = arr[unitIndex].consumables.filter((consumable, index) => index !== itemIndex);
         break;
       case 'perk':
-      case 'leader perk':
+      case 'leader':
         arr[unitIndex].perks = arr[unitIndex].perks.filter((perk, index) => index !== itemIndex);
         break;
       default:
@@ -154,17 +166,19 @@ const BuilderContainer = (props) => {
     let arr = [];
 
     if(unit !== null){
-      arr.push(unit.card);
+      arr.push(unit.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png');
 
       if(unit.isHeroic){
         arr.push('heroic.png');
       }
 
-      unit.weapons.forEach(item => arr.push(item.card));
-      unit.armor.forEach(item => arr.push(item.card));
-      unit.mods.forEach(item => arr.push(item.card));
-      unit.consumables.forEach(item => arr.push(item.card));
-      unit.perks.forEach(item => arr.push(item.card));
+      unit.weapons.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'));
+      unit.armor.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
+      unit.mods.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
+      unit.consumables.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
+      unit.perks.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
+
+      console.log(arr);
     }
     else{
       arr.push('default.png');
@@ -230,7 +244,7 @@ const BuilderContainer = (props) => {
         <ObjectList className='mobile-container' list={list} mode={props.mode} menu={menu} isMobile={isMobile} openMenu={openMenu} addUnit={addUnit} addItem={addItem} mobileHideObjects={mobileToggleObjects}/>
       </div>
       <div id='playerDisplay'>
-        <PlayerList list={list} isMobile={isMobile} addUnit={addUnit} removeUnit={removeUnit} openMenu={openMenu} buildImageList={buildImageList} addItem={addItem} removeItem={removeItem} addHeroic={addHeroic} mobileShowObjects={mobileToggleObjects} mobileShowImages={mobileToggleImages}/>
+        <PlayerList list={list} isMobile={isMobile} addUnit={addUnit} removeUnit={removeUnit} openMenu={openMenu} buildImageList={buildImageList} addItem={addItem} removeItem={removeItem} addHeroic={addHeroic} mobileShowObjects={mobileToggleObjects} mobileShowImages={mobileToggleImages} downloadTextList={downloadTextList} deleteList={deleteList}/>
       </div>
       <div hidden={isMobile} id='cardDisplay'>
         <CardDisplay className='mobile-container' list={list} imageList={imageList} isMobile={isMobile} downloadTextList={downloadTextList} mobileHideImages={mobileToggleImages}/>

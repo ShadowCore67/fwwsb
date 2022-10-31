@@ -3,5 +3,6 @@
 }
 
 .return-button {
-    width: 100%;
+    background-color: darkblue;
+    border: none;
 }

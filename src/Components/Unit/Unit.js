@@ -7,7 +7,7 @@ const Unit = (props) => {
             return (
                 <div className='object'>
                     <span>{props.unit.name} ({props.unit.caps})</span>
-                    <Button variant='secondary' className='add-button' onClick={() => props.addUnit(props.unit)}>+</Button>
+                    <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
                 </div>
             );
         }
@@ -15,7 +15,7 @@ const Unit = (props) => {
             return (
                 <div className='object'>
                     <span>{props.item.name} ({props.item.caps})</span>
-                    <Button variant='secondary' className='add-button' onClick={() => props.addItem(props.item, props.unitIndex)}>+</Button>
+                    <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
                 </div>
             );
         }
