@@ -3,6 +3,7 @@ import ObjectList from '../ObjectList/ObjectList';
 import PlayerList from '../PlayerList/PlayerList';
 import CardDisplay from '../CardDisplay/CardDisplay';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const BuilderContainer = (props) => {
 
@@ -14,6 +15,7 @@ const BuilderContainer = (props) => {
   function addUnit(unit){
     setList(arr => [...arr, JSON.parse(JSON.stringify(unit))]);
     buildImageList(unit);
+    toast(unit.name + ' added!');
   }
 
   function removeUnit(index){
@@ -94,6 +96,7 @@ const BuilderContainer = (props) => {
     arr[unitIndex].caps += item.caps;
     setList(arr);
     buildImageList(arr[unitIndex]);
+    toast(item.name + ' added to ' + arr[unitIndex].name + '!');
   }
 
   function removeItem(item, unitIndex, itemIndex){
@@ -177,8 +180,6 @@ const BuilderContainer = (props) => {
       unit.mods.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
       unit.consumables.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
       unit.perks.forEach(item => arr.push(item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'));
-
-      console.log(arr);
     }
     else{
       arr.push('default.png');
