@@ -5,7 +5,7 @@
 
 .object {
     display: grid;
-    grid-template-columns: 90% 10%;
+    grid-template-columns: 80% 10% 10%;
     align-items: center;
     margin: 1%;
     font-weight: bold;
@@ -15,7 +15,7 @@
 @media (max-width: 800px) {
     .object {
         display: grid;
-        grid-template-columns: 90% 10%;
+        grid-template-columns: 80% 10% 10%;
         align-items: center;
         margin: 1%;
         font-weight: bold;
