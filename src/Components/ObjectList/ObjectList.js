@@ -88,7 +88,7 @@ const ObjectList = (props) => {
 
     return (
         <div className='grid-item'>
-            <Button hidden={!props.isMobile} variant='secondary' className='return-button w-100' onClick={() => props.mobileHideObjects()}>Return to List</Button>
+            <Button hidden={!props.isMobile} variant='secondary' className='return-button sticky-top w-100' onClick={() => props.mobileHideObjects()}>Return to List</Button>
             <SearchBar unitFilter={unitFilter} filterType={setType} filterFaction={setFaction} search={setSearchString} menuType={props.menu.menuType}/>
             {itemBar}
             {list}  

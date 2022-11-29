@@ -5,7 +5,7 @@ import { useState } from 'react';
 const Unit = (props) => {
     let count = 0;
 
-    const [hover, setHover] = useState(false);
+    const [viewImage, setViewImage] = useState(false);
 
     if(props.type === 'unit'){
         props.list.forEach(unit => {
@@ -76,22 +76,34 @@ const Unit = (props) => {
 
     function Entry(){
         if(props.type === 'unit'){
-            return (
-                <div className='object'>
-                    <span  onMouseEnter={() => showImage(true)} onMouseLeave={() => showImage(false)}>{props.unit.name} ({props.unit.caps})</span>
-                    {count > 0 ? <span>x{count}</span> : <span></span>}
-                    <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
-                    <img className='hover-card' hidden={!hover} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='unit'></img>
-                </div>
-            );
+            if(props.isMobile) {
+                return (
+                    <div className='object'>
+                        <span onClick={() => setViewImage(true)}>{props.unit.name} ({props.unit.caps})</span>
+                        {count > 0 ? <span>x{count}</span> : <span></span>}
+                        <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
+                        <img onClick={() => setViewImage(false)} className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='unit'></img>
+                    </div>
+                );
+            }
+            else {
+                return (
+                    <div className='object'>
+                        <span  onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.unit.name} ({props.unit.caps})</span>
+                        {count > 0 ? <span>x{count}</span> : <span></span>}
+                        <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
+                        <img className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='unit'></img>
+                    </div>
+                );
+            }
         }
         else{
             return (
                 <div className='object'>
-                    <span  onMouseEnter={() => showImage(true)} onMouseLeave={() => showImage(false)}>{props.item.name} ({props.item.caps})</span>
+                    <span  onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.item.name} ({props.item.caps})</span>
                     {count > 0 ? <span>x{count}</span> : <span></span>}
                     <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
-                    <img className='hover-item-card' hidden={!hover} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='item'></img>
+                    <img className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='item'></img>
                 </div>
             );
         }
@@ -100,13 +112,13 @@ const Unit = (props) => {
 
     let timeoutHandle;
 
-    function showImage(value){
+    function showImageHover(value){
         if(value){
-            timeoutHandle = setTimeout(() => setHover(true), 500);
+            timeoutHandle = setTimeout(() => setViewImage(true), 500);
         }
         else{
             clearTimeout(timeoutHandle);
-            setHover(false);
+            setViewImage(false);
         }
     }
    
