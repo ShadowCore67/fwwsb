@@ -21,34 +21,52 @@ const ObjectList = (props) => {
             .then((data) => setItems(data));
     }, []);
 
+    // useEffect(() => {
+    //     fetch("http://localhost:8080/units")
+    //         .then((response) => response.json())
+    //         .then((data) => setUnits(data));
+
+    //     fetch("http://localhost:8080/items")
+    //         .then((response) => response.json())
+    //         .then((data) => setItems(data));
+    // }, []);
+
     const weapons = ['rifle', 'pistol', 'heavy', 'melee', 'thrown'];
     const armors = ['armor', 'clothing', 'power armor'];
     const mods = ['rifle mod', 'pistol mod', 'melee mod', 'armor mod', 'power armor mod'];
-    const consumables = ['food', 'alcohol', 'chem', 'gear'];
-    const perks = ['perk', 'leader perk'];
+    const usables = ['food', 'alcohol', 'chem', 'gear'];
+    const perks = ['perk', 'leader'];
+
+    function filterItems(items, item) {
+        return (items.includes(item.type) && 
+                props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && 
+                (item.type === type || type === '') && 
+                (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()));
+    }
 
     let list;
     switch(props.menu.menuType){
         case 'units':
-            list = units.filter((unit) => (unit.factions.includes(faction) || faction === '') && (searchString === '' || unit.name.toLowerCase().includes(searchString.toLowerCase()))).map((unit, index) => <Unit type='unit' unit={unit} key={index} list={props.list} addUnit={props.addUnit} setFileName={props.setFileName}/>);
+            list = units.filter((unit) => (unit.factions.includes(faction) || faction === '') && (searchString === '' || unit.name.toLowerCase().includes(searchString.toLowerCase()))).map((unit, index) => <Unit type='unit' unit={unit} key={index} list={props.list} addUnit={props.addUnit} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'weapons':
-            list = items.filter((weapon) => weapons.includes(weapon.type) && props.list[props.menu.unitIndex].itemCategories.includes(weapon.category)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((weapon) => filterItems(weapons, weapon)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'armor':
-            list = items.filter((armor) => armors.includes(armor.type) && props.list[props.menu.unitIndex].itemCategories.includes(armor.category)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((armor) => filterItems(armors, armor)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'mods':
-            list = items.filter((mod) => mods.includes(mod.type) && props.list[props.menu.unitIndex].itemCategories.includes(mod.category)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((mod) => filterItems(mods, mod)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'consumables':
-            list = items.filter((consumable) => consumables.includes(consumable.type) && props.list[props.menu.unitIndex].itemCategories.includes(consumable.category)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((usable) => filterItems(usables, usable)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'perks':
-            list = items.filter((perk) => perks.includes(perk.type) && props.list[props.menu.unitIndex].itemCategories.includes(perk.category)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            console.log(type);
+            list = items.filter((perk) => filterItems(perks, perk)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'all':
-            list = items.filter((item) => (props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && (item.type === type || type === '') && (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()))).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((item) => (props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && (item.type === type || type === '') && (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()))).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         default:
             break;
@@ -64,14 +82,14 @@ const ObjectList = (props) => {
     }
 
     let unitFilter = true;
-    if(props.menu.menuType === 'all'){
+    if(props.menu.menuType !== 'units'){
         unitFilter = false;
     }
 
     return (
         <div className='grid-item'>
-            <Button hidden={!props.isMobile} variant='secondary' className='return-button w-100' onClick={() => props.mobileHideObjects()}>Return to List</Button>
-            <SearchBar unitFilter={unitFilter} filterType={setType} filterFaction={setFaction} search={setSearchString}/>
+            <Button hidden={!props.isMobile} variant='secondary' className='return-button sticky-top w-100' onClick={() => props.mobileHideObjects()}>Return to List</Button>
+            <SearchBar unitFilter={unitFilter} filterType={setType} filterFaction={setFaction} search={setSearchString} menuType={props.menu.menuType}/>
             {itemBar}
             {list}  
         </div>

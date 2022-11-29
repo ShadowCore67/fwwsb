@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import MobilePopUp from '../MobilePopUp/MobilePopUp';
 import { useState } from 'react';
+import DeletePopUp from '../DeletePopUp/DeletePopUp';
 
 const PlayerUnit = (props) => {
 
@@ -13,7 +14,7 @@ const PlayerUnit = (props) => {
             card: unit.card,
             isHeroic: unit.isHeroic,
             factions: [...unit.factions],
-            upgradeCategories: [...unit.upgradeCategories],
+            itemCategories: [...unit.itemCategories],
             weapons: [...unit.weapons],
             armor: [...unit.armor],
             mods: [...unit.mods],
@@ -137,13 +138,13 @@ const PlayerUnit = (props) => {
             <MobilePopUp trigger={trigger} setTrigger={setTrigger}>
                 <div className='pop-up-item' onClick={() => {props.buildImageList(props.unit); props.mobileShowImages();}}>View</div>
                 <div className='pop-up-item' onClick={() => copyUnit(props.unit)}>Copy</div>
-                <div className='pop-up-item' onClick={() => props.removeUnit(props.unitIndex)}>Delete</div>
+                <div className='pop-up-item' onClick={() => props.openUnitDeleteDialog(true)}>Delete</div>
             </MobilePopUp>
-            <Button hidden={props.isMobile} variant='danger' className='side-button' onClick={() => props.removeUnit(props.unitIndex)}><span className="material-symbols-outlined">delete</span></Button>
+            <Button hidden={props.isMobile} variant='danger' className='side-button' onClick={() => props.openUnitDeleteDialog(true)}><span className="material-symbols-outlined">delete</span></Button>
             <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('weapons', props.unitIndex)}>Weapons</Button>
             <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('armor', props.unitIndex)}>Armor</Button>
             <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('mods', props.unitIndex)}>Mods</Button>
-            <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('consumables', props.unitIndex)}>Gear & Usables</Button>
+            <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('consumables', props.unitIndex)}>Usables</Button>
             <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('perks', props.unitIndex)}>Perks</Button>
             <Button hidden={props.isMobile} className='side-button material-button' onClick={() => copyUnit(props.unit)}><span className="material-symbols-outlined">content_copy</span></Button>
             <Button hidden={!props.isMobile} className='upgrade-button' onClick={() => props.openMenu('all', props.unitIndex)}>Add Items</Button>
@@ -163,6 +164,7 @@ const PlayerUnit = (props) => {
                 {perks}
             </div>
         </div>
+            <DeletePopUp openDelete={props.openUnitDelete} openDeleteDialog={props.openUnitDeleteDialog} removeUnit={props.removeUnit} index={props.unitIndex} unitName={props.unit.name}/>
       </div>
     );
   }

@@ -30,19 +30,25 @@
 }
 
 .mobile-button {
-    display: none;
-}
-
-@media (max-width: 800px) {
-    .mobile-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 1px;
-        border: none;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1px;
+    border: none;
 }
 
 .delete {
     background-color: none;
+    margin-left: auto;
+}
+
+@media (max-width: 800px) {
+    .delete {
+        margin-left: 0;
+    }
+}
+
+.dummy {
+    margin-right: auto;
+    visibility: hidden;
 }

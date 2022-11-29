@@ -21,7 +21,7 @@
 
 .unit-name {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 @media (max-width: 800px) {
@@ -97,7 +97,7 @@
 }
 
 .unit-title {
-    grid-column: 1 / 4;
+    grid-column: 1 / 5;
 }
 
 @media (max-width: 800px) {

@@ -13,19 +13,19 @@
 }
 
 .item-card {
-    border-radius: 5%;
+    border-radius: 25px;
     width: 100%;
 }
 
 .unit-card {
-    border-radius: 5%;
+    border-radius: 25px;
     grid-row: 1 / 3;
     width: 100%;
 }
 
 @media (max-width: 800px) {
     .unit-card {
-        border-radius: 5%;
+        border-radius: 25px;
         grid-row: 2;
         width: 100%;
     }
