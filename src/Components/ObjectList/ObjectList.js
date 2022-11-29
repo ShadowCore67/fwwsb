@@ -47,26 +47,26 @@ const ObjectList = (props) => {
     let list;
     switch(props.menu.menuType){
         case 'units':
-            list = units.filter((unit) => (unit.factions.includes(faction) || faction === '') && (searchString === '' || unit.name.toLowerCase().includes(searchString.toLowerCase()))).map((unit, index) => <Unit type='unit' unit={unit} key={index} list={props.list} addUnit={props.addUnit} setFileName={props.setFileName}/>);
+            list = units.filter((unit) => (unit.factions.includes(faction) || faction === '') && (searchString === '' || unit.name.toLowerCase().includes(searchString.toLowerCase()))).map((unit, index) => <Unit type='unit' unit={unit} key={index} list={props.list} addUnit={props.addUnit} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'weapons':
-            list = items.filter((weapon) => filterItems(weapons, weapon)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((weapon) => filterItems(weapons, weapon)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'armor':
-            list = items.filter((armor) => filterItems(armors, armor)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((armor) => filterItems(armors, armor)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'mods':
-            list = items.filter((mod) => filterItems(mods, mod)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((mod) => filterItems(mods, mod)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'consumables':
-            list = items.filter((usable) => filterItems(usables, usable)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((usable) => filterItems(usables, usable)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'perks':
             console.log(type);
-            list = items.filter((perk) => filterItems(perks, perk)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((perk) => filterItems(perks, perk)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'all':
-            list = items.filter((item) => (props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && (item.type === type || type === '') && (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()))).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName}/>);
+            list = items.filter((item) => (props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && (item.type === type || type === '') && (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()))).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         default:
             break;
