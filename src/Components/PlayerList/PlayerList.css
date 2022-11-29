@@ -42,6 +42,12 @@
     margin-left: auto;
 }
 
+@media (max-width: 800px) {
+    .delete {
+        margin-left: 0;
+    }
+}
+
 .dummy {
     margin-right: auto;
     visibility: hidden;

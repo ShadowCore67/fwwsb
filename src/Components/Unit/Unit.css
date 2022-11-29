@@ -36,12 +36,8 @@
 
 @media (max-width: 800px) {
     .hover-card {
-        border-radius: 25px;
-        position: absolute;
         left: 6%;
         height: 55vh;
-        max-width: auto;
-        z-index: 9999;
     }
 }
 
@@ -52,4 +48,11 @@
     height: 25vh;
     max-width: auto;
     z-index: 9999;
+}
+
+@media (max-width: 800px) {
+    .hover-item-card {
+        left: 7%;
+        height: 25vh;
+    }
 }
