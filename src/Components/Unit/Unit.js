@@ -1,8 +1,11 @@
 import './Unit.css';
 import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
 
 const Unit = (props) => {
     let count = 0;
+
+    const [hover, setHover] = useState(false);
 
     if(props.type === 'unit'){
         props.list.forEach(unit => {
@@ -75,22 +78,36 @@ const Unit = (props) => {
         if(props.type === 'unit'){
             return (
                 <div className='object'>
-                    <span>{props.unit.name} ({props.unit.caps})</span>
+                    <span  onMouseEnter={() => showImage(true)} onMouseLeave={() => showImage(false)}>{props.unit.name} ({props.unit.caps})</span>
                     {count > 0 ? <span>x{count}</span> : <span></span>}
                     <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
+                    <img className='hover-card' hidden={!hover} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='unit'></img>
                 </div>
             );
         }
         else{
             return (
                 <div className='object'>
-                    <span>{props.item.name} ({props.item.caps})</span>
+                    <span  onMouseEnter={() => showImage(true)} onMouseLeave={() => showImage(false)}>{props.item.name} ({props.item.caps})</span>
                     {count > 0 ? <span>x{count}</span> : <span></span>}
                     <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
+                    <img className='hover-item-card' hidden={!hover} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='item'></img>
                 </div>
             );
         }
      
+    }
+
+    let timeoutHandle;
+
+    function showImage(value){
+        if(value){
+            timeoutHandle = setTimeout(() => setHover(true), 500);
+        }
+        else{
+            clearTimeout(timeoutHandle);
+            setHover(false);
+        }
     }
    
     return (

@@ -31,11 +31,14 @@ const BuilderContainer = (props) => {
       });
     }
 
+    setOpenUnitDelete(false);
     buildImageList(null);
   }
 
   function deleteList(){
+    buildImageList(null);
     setList([]);
+    setOpenListDelete(false);
   }
   
   function addHeroic(unitIndex){
@@ -200,6 +203,7 @@ const BuilderContainer = (props) => {
 
     list.forEach((unit) => {
       textList += unit.name + ' (' + unit.caps + ' caps)\n';
+      unit.isHeroic ? textList += '\t-Heroic\n' : textList += '';
       unit.weapons.forEach((item) => textList += '\t-' + item.name + '\n');
       unit.armor.forEach((item) => textList += '\t-' + item.name + '\n');
       unit.mods.forEach((item) => textList += '\t-' + item.name + '\n');
@@ -239,16 +243,49 @@ const BuilderContainer = (props) => {
     }
   }
 
+  const [openUnitDelete, setOpenUnitDelete] = useState(false);
+  const [openListDelete, setOpenListDelete] = useState(false);
+
   return (
     <div className='container'>
       <div hidden={isMobile} id='objectDisplay'>
-        <ObjectList className='mobile-container' list={list} mode={props.mode} menu={menu} isMobile={isMobile} openMenu={openMenu} addUnit={addUnit} addItem={addItem} mobileHideObjects={mobileToggleObjects}/>
+        <ObjectList 
+        className='mobile-container' 
+        list={list} mode={props.mode} 
+        menu={menu} isMobile={isMobile} 
+        openMenu={openMenu} 
+        addUnit={addUnit} 
+        addItem={addItem} 
+        mobileHideObjects={mobileToggleObjects}/>
       </div>
       <div id='playerDisplay'>
-        <PlayerList list={list} isMobile={isMobile} addUnit={addUnit} removeUnit={removeUnit} openMenu={openMenu} buildImageList={buildImageList} addItem={addItem} removeItem={removeItem} addHeroic={addHeroic} mobileShowObjects={mobileToggleObjects} mobileShowImages={mobileToggleImages} downloadTextList={downloadTextList} deleteList={deleteList}/>
+        <PlayerList 
+        list={list} 
+        isMobile={isMobile} 
+        addUnit={addUnit}
+        openUnitDelete={!openUnitDelete}
+        openListDelete={!openListDelete} 
+        removeUnit={removeUnit} 
+        openUnitDeleteDialog={setOpenUnitDelete} 
+        openListDeleteDialog={setOpenListDelete}
+        openMenu={openMenu} 
+        buildImageList={buildImageList} 
+        addItem={addItem} 
+        removeItem={removeItem} 
+        addHeroic={addHeroic} 
+        mobileShowObjects={mobileToggleObjects} 
+        mobileShowImages={mobileToggleImages} 
+        downloadTextList={downloadTextList} 
+        deleteList={deleteList}/>
       </div>
       <div hidden={isMobile} id='cardDisplay'>
-        <CardDisplay className='mobile-container' list={list} imageList={imageList} isMobile={isMobile} downloadTextList={downloadTextList} mobileHideImages={mobileToggleImages}/>
+        <CardDisplay 
+        className='mobile-container' 
+        list={list} 
+        imageList={imageList} 
+        isMobile={isMobile} 
+        downloadTextList={downloadTextList} 
+        mobileHideImages={mobileToggleImages}/>
       </div>
     </div>
   );

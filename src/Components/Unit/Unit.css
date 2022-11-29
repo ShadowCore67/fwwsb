@@ -9,7 +9,8 @@
     align-items: center;
     margin: 1%;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
+    position: relative;
 }
 
 @media (max-width: 800px) {
@@ -20,5 +21,24 @@
         margin: 1%;
         font-weight: bold;
         font-size: 18px;
+        position: relative;
     }
+}
+
+.hover-card {
+    border-radius: 25px;
+    position: absolute;
+    left: 101.5%;
+    height: 40vh;
+    max-width: auto;
+    z-index: 9999;
+}
+
+.hover-item-card {
+    border-radius: 25px;
+    position: absolute;
+    left: 101.5%;
+    height: 25vh;
+    max-width: auto;
+    z-index: 9999;
 }

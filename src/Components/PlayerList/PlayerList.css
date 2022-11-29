@@ -30,17 +30,11 @@
 }
 
 .mobile-button {
-    display: none;
-}
-
-@media (max-width: 800px) {
-    .mobile-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 1px;
-        border: none;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1px;
+    border: none;
 }
 
 .delete {
