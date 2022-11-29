@@ -53,6 +53,7 @@ const BuilderContainer = (props) => {
     }
 
     setList(arr);
+    buildImageList(arr[unitIndex]);
   }
 
   function addItem(item, unitIndex){
