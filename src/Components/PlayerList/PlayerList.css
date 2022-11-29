@@ -39,4 +39,10 @@
 
 .delete {
     background-color: none;
+    margin-left: auto;
+}
+
+.dummy {
+    margin-right: auto;
+    visibility: hidden;
 }
