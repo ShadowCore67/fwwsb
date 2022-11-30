@@ -82,7 +82,7 @@ const Unit = (props) => {
                         <span onClick={() => setViewImage(true)}>{props.unit.name} ({props.unit.caps})</span>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
-                        <img onClick={() => setViewImage(false)} className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='unit'></img>
+                        <img onClick={() => setViewImage(false)} className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='unit'></img>
                     </div>
                 );
             }
@@ -92,7 +92,7 @@ const Unit = (props) => {
                         <span onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.unit.name} ({props.unit.caps})</span>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
-                        <img className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='unit'></img>
+                        <img className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='unit'></img>
                     </div>
                 );
             }
@@ -104,7 +104,7 @@ const Unit = (props) => {
                         <span onClick={() => setViewImage(true)}>{props.item.name} ({props.item.caps})</span>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
-                        <img onClick={() => setViewImage(false)} className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='item'></img>
+                        <img onClick={() => setViewImage(false)} className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='item'></img>
                     </div>
                 );
             }
@@ -114,7 +114,7 @@ const Unit = (props) => {
                         <span onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.item.name} ({props.item.caps})</span>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
-                        <img className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]]|\s|-/g, '') + '.png'} alt='item'></img>
+                        <img className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='item'></img>
                     </div>
                 );
             }
