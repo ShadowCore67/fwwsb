@@ -33,7 +33,7 @@ const ObjectList = (props) => {
 
     const weapons = ['rifle', 'pistol', 'heavy', 'melee', 'thrown'];
     const armors = ['armor', 'clothing', 'power armor'];
-    const mods = ['rifle mod', 'pistol mod', 'melee mod', 'armor mod', 'power armor mod'];
+    const mods = ['rifle mod', 'pistol mod', 'melee mod', 'armor mod', 'power armor mod', 'robot mod', 'creature mod'];
     const usables = ['food', 'alcohol', 'chem', 'gear'];
     const perks = ['perk', 'leader'];
 
