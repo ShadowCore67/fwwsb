@@ -62,7 +62,6 @@ const ObjectList = (props) => {
             list = items.filter((usable) => filterItems(usables, usable)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'perks':
-            console.log(type);
             list = items.filter((perk) => filterItems(perks, perk)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
             break;
         case 'all':
