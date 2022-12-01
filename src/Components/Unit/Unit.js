@@ -79,7 +79,10 @@ const Unit = (props) => {
             if(props.isMobile) {
                 return (
                     <div className='object'>
-                        <span onClick={() => setViewImage(true)}>{props.unit.name} ({props.unit.caps})</span>
+                        <div>
+                            <p className='unit-title' onClick={() => setViewImage(true)}>{props.unit.name} ({props.unit.caps})</p>
+                            <p className='unit-title subtext'>{props.unit.factions.toString().replace(/,/g, ', ')}</p>
+                        </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
                         <img onClick={() => setViewImage(false)} className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='unit'></img>
@@ -89,7 +92,10 @@ const Unit = (props) => {
             else {
                 return (
                     <div className='object'>
-                        <span onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.unit.name} ({props.unit.caps})</span>
+                        <div>
+                            <p className='unit-title' onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.unit.name} ({props.unit.caps})</p>
+                            <p className='unit-title subtext'>{props.unit.factions.toString().replace(/,/g, ', ')}</p>
+                        </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
                         <img className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='unit'></img>
@@ -101,7 +107,10 @@ const Unit = (props) => {
             if(props.isMobile) {
                 return (
                     <div className='object'>
-                        <span onClick={() => setViewImage(true)}>{props.item.name} ({props.item.caps})</span>
+                        <div>
+                            <p className='unit-title' onClick={() => setViewImage(true)}>{props.item.name} ({props.item.caps})</p>
+                            <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}</p>
+                        </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
                         <img onClick={() => setViewImage(false)} className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='item'></img>
@@ -111,7 +120,10 @@ const Unit = (props) => {
             else {
                 return (
                     <div className='object'>
-                        <span onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.item.name} ({props.item.caps})</span>
+                        <div>
+                            <p className='unit-title' onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.item.name} ({props.item.caps})</p>
+                            <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}</p>
+                        </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
                         <img className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='item'></img>
