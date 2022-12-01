@@ -79,8 +79,8 @@ const Unit = (props) => {
             if(props.isMobile) {
                 return (
                     <div className='object'>
-                        <div>
-                            <p className='unit-title' onClick={() => setViewImage(true)}>{props.unit.name} ({props.unit.caps})</p>
+                        <div onClick={() => setViewImage(true)}>
+                            <p className='unit-title'>{props.unit.name} ({props.unit.caps})</p>
                             <p className='unit-title subtext'>{props.unit.factions.toString().replace(/,/g, ', ')}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
@@ -92,8 +92,8 @@ const Unit = (props) => {
             else {
                 return (
                     <div className='object'>
-                        <div>
-                            <p className='unit-title' onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.unit.name} ({props.unit.caps})</p>
+                        <div onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>
+                            <p className='unit-title'>{props.unit.name} ({props.unit.caps})</p>
                             <p className='unit-title subtext'>{props.unit.factions.toString().replace(/,/g, ', ')}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
@@ -107,8 +107,8 @@ const Unit = (props) => {
             if(props.isMobile) {
                 return (
                     <div className='object'>
-                        <div>
-                            <p className='unit-title' onClick={() => setViewImage(true)}>{props.item.name} ({props.item.caps})</p>
+                        <div onClick={() => setViewImage(true)}>
+                            <p className='unit-title'>{props.item.name} ({props.item.caps})</p>
                             <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
@@ -120,8 +120,8 @@ const Unit = (props) => {
             else {
                 return (
                     <div className='object'>
-                        <div>
-                            <p className='unit-title' onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>{props.item.name} ({props.item.caps})</p>
+                        <div onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>
+                            <p className='unit-title'>{props.item.name} ({props.item.caps})</p>
                             <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
@@ -138,7 +138,7 @@ const Unit = (props) => {
 
     function showImageHover(value){
         if(value){
-            timeoutHandle = setTimeout(() => setViewImage(true), 500);
+            timeoutHandle = setTimeout(() => setViewImage(true), 300);
         }
         else{
             clearTimeout(timeoutHandle);
