@@ -52,3 +52,9 @@
     margin-right: auto;
     visibility: hidden;
 }
+
+.empty-message {
+    margin-top: 35vh;
+    margin-bottom: 35vh;
+    font-size: 24px;
+}

@@ -34,7 +34,10 @@ const PlayerList = (props) => {
           {props.isMobile ? <Button className='material-button' onClick={() => props.downloadTextList()}><span className="material-symbols-outlined">download</span></Button> : <></>}
           <Button variant='danger' className='mobile-button delete' disabled={props.list.length === 0} onClick={() => props.setOpenListDelete(true)}><span className="material-symbols-outlined">delete</span></Button>
         </div>
-        {unitList}
+        {props.list.length > 0 ? unitList : 
+        <div>
+          <p className='empty-message'>Add units to your squad!</p>
+        </div>}
         <DeletePopUp openDelete={props.openListDelete} setOpenListDelete={props.setOpenListDelete} deleteList={props.deleteList} unitName={''}/>
       </div>
     );
