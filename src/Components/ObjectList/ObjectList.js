@@ -11,25 +11,25 @@ const ObjectList = (props) => {
     const [searchString, setSearchString] = useState('');
     const [type, setType] = useState('');
 
-    useEffect(() => {
-        fetch("https://fwwsb-api-po8bv.ondigitalocean.app/units")
-            .then((response) => response.json())
-            .then((data) => setUnits(data));
-
-        fetch("https://fwwsb-api-po8bv.ondigitalocean.app/items")
-            .then((response) => response.json())
-            .then((data) => setItems(data));
-    }, []);
-
     // useEffect(() => {
-    //     fetch("http://localhost:8080/units")
+    //     fetch("https://fwwsb-api-po8bv.ondigitalocean.app/units")
     //         .then((response) => response.json())
     //         .then((data) => setUnits(data));
 
-    //     fetch("http://localhost:8080/items")
+    //     fetch("https://fwwsb-api-po8bv.ondigitalocean.app/items")
     //         .then((response) => response.json())
     //         .then((data) => setItems(data));
     // }, []);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/units")
+            .then((response) => response.json())
+            .then((data) => setUnits(data));
+
+        fetch("http://localhost:8080/items")
+            .then((response) => response.json())
+            .then((data) => setItems(data));
+    }, []);
 
     const weapons = ['rifle', 'pistol', 'heavy', 'melee', 'thrown'];
     const armors = ['armor', 'clothing', 'power armor'];
@@ -47,25 +47,25 @@ const ObjectList = (props) => {
     let list;
     switch(props.menu.menuType){
         case 'units':
-            list = units.filter((unit) => (unit.factions.includes(faction) || faction === '') && (searchString === '' || unit.name.toLowerCase().includes(searchString.toLowerCase()))).map((unit, index) => <Unit type='unit' unit={unit} key={index} list={props.list} addUnit={props.addUnit} setFileName={props.setFileName} isMobile={props.isMobile}/>);
+            list = units.filter((unit) => (unit.factions.includes(faction) || faction === '') && (searchString === '' || unit.name.toLowerCase().includes(searchString.toLowerCase()))).map((unit, index) => <Unit type='unit' unit={unit} key={index} list={props.list} addUnit={props.addUnit} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         case 'weapons':
-            list = items.filter((weapon) => filterItems(weapons, weapon)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
+            list = items.filter((weapon) => filterItems(weapons, weapon)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         case 'armor':
-            list = items.filter((armor) => filterItems(armors, armor)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
+            list = items.filter((armor) => filterItems(armors, armor)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         case 'mods':
-            list = items.filter((mod) => filterItems(mods, mod)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
+            list = items.filter((mod) => filterItems(mods, mod)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         case 'consumables':
-            list = items.filter((usable) => filterItems(usables, usable)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
+            list = items.filter((usable) => filterItems(usables, usable)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         case 'perks':
-            list = items.filter((perk) => filterItems(perks, perk)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
+            list = items.filter((perk) => filterItems(perks, perk)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         case 'all':
-            list = items.filter((item) => (props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && (item.type === type || type === '') && (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()))).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile}/>);
+            list = items.filter((item) => (props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && (item.type === type || type === '') && (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()))).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         default:
             break;

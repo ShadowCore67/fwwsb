@@ -11,16 +11,38 @@ const BuilderContainer = (props) => {
 
   //state and functions for player's list
   const [list, setList] = useState([]);
+  const [uniques, setUniques] = useState([]);
   
   function addUnit(unit){
     setList(arr => [...arr, JSON.parse(JSON.stringify(unit))]);
+    if(unit.unique) {
+      setUniques(arr => [...arr, unit.name]);
+    }
     buildImageList(unit);
     toast(unit.name + ' added!');
   }
 
   function removeUnit(index){
+    //remove any unique flags
+    if(uniques.includes(list[index].name)) {
+      setUniques(arr => arr.filter((name) => name !== list[index].name))
+    }
+
+    //loops through all the unit's items to remove any unique
+    if(list[index].weapons.length > 0 || list[index].armor > 0 || list[index].mods.length > 0 || list[index].consumables.length > 0 || list[index].perks.length > 0) {
+        let items = [...list[index].weapons, ...list[index].armor, ...list[index].mods, ...list[index].consumables, ...list[index].perks]
+
+        for(let item of items) {
+          if(uniques.includes(item.name)) {
+            setUniques(arr => arr.filter((name) => name !== item.name))
+          }
+        }
+    }
+
+    //remove unit
     setList(arr => arr.filter((unit, unitIndex) => unitIndex !== index));
     
+    //reset menu
     if(index === menu.unitIndex && !isMobile){
       openMenu('units', -1);
     }
@@ -31,13 +53,13 @@ const BuilderContainer = (props) => {
       });
     }
 
-    setOpenUnitDelete(false);
     buildImageList(null);
   }
 
   function deleteList(){
     buildImageList(null);
     setList([]);
+    setUniques([]);
     setOpenListDelete(false);
   }
   
@@ -99,6 +121,9 @@ const BuilderContainer = (props) => {
 
     arr[unitIndex].caps += item.caps;
     setList(arr);
+    if(item.unique) {
+      setUniques(arr => [...arr, item.name]);
+    }
     buildImageList(arr[unitIndex]);
     toast(item.name + ' added to ' + arr[unitIndex].name + '!');
   }
@@ -244,7 +269,6 @@ const BuilderContainer = (props) => {
     }
   }
 
-  const [openUnitDelete, setOpenUnitDelete] = useState(false);
   const [openListDelete, setOpenListDelete] = useState(false);
 
   return (
@@ -252,7 +276,8 @@ const BuilderContainer = (props) => {
       <div hidden={isMobile} id='objectDisplay'>
         <ObjectList 
         className='mobile-container' 
-        list={list} mode={props.mode} 
+        list={list} mode={props.mode}
+        uniques={uniques}
         menu={menu} isMobile={isMobile} 
         openMenu={openMenu} 
         addUnit={addUnit} 
@@ -264,11 +289,9 @@ const BuilderContainer = (props) => {
         list={list} 
         isMobile={isMobile} 
         addUnit={addUnit}
-        openUnitDelete={!openUnitDelete}
-        openListDelete={!openListDelete} 
-        removeUnit={removeUnit} 
-        openUnitDeleteDialog={setOpenUnitDelete} 
-        openListDeleteDialog={setOpenListDelete}
+        openListDelete={openListDelete} 
+        removeUnit={removeUnit}  
+        setOpenListDelete={setOpenListDelete}
         openMenu={openMenu} 
         buildImageList={buildImageList} 
         addItem={addItem} 

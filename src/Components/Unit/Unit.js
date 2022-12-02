@@ -81,10 +81,10 @@ const Unit = (props) => {
                     <div className='object'>
                         <div onClick={() => setViewImage(true)}>
                             <p className='unit-title'>{props.unit.name} ({props.unit.caps})</p>
-                            <p className='unit-title subtext'>{props.unit.factions.toString().replace(/,/g, ', ')}</p>
+                            <p className='unit-title subtext'>{props.unit.factions.toString().replace(/,/g, ', ')}{props.unit.unique ? <span>, Unique</span> : <></>}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
-                        <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
+                        <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)} disabled={props.uniques.includes(props.unit.name)}><span className="material-symbols-outlined">add</span></Button>
                         <img onClick={() => setViewImage(false)} className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='unit'></img>
                     </div>
                 );
@@ -94,10 +94,10 @@ const Unit = (props) => {
                     <div className='object'>
                         <div onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>
                             <p className='unit-title'>{props.unit.name} ({props.unit.caps})</p>
-                            <p className='unit-title subtext'>{props.unit.factions.toString().replace(/,/g, ', ')}</p>
+                            <p className='unit-title subtext'>{props.unit.factions.toString().replace(/,/g, ', ')}{props.unit.unique ? <span>, Unique</span> : <></>}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
-                        <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)}><span className="material-symbols-outlined">add</span></Button>
+                        <Button variant='secondary' className='material-button' onClick={() => props.addUnit(props.unit)} disabled={props.uniques.includes(props.unit.name)}><span className="material-symbols-outlined">add</span></Button>
                         <img className='hover-card' hidden={!viewImage} src={'images/' + props.unit.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='unit'></img>
                     </div>
                 );
@@ -109,10 +109,10 @@ const Unit = (props) => {
                     <div className='object'>
                         <div onClick={() => setViewImage(true)}>
                             <p className='unit-title'>{props.item.name} ({props.item.caps})</p>
-                            <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}</p>
+                            <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}{props.item.unique ? <span>, Unique</span> : <></>}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
-                        <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
+                        <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)} disabled={props.uniques.includes(props.item.name)}><span className="material-symbols-outlined">add</span></Button>
                         <img onClick={() => setViewImage(false)} className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='item'></img>
                     </div>
                 );
@@ -122,10 +122,10 @@ const Unit = (props) => {
                     <div className='object'>
                         <div onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>
                             <p className='unit-title'>{props.item.name} ({props.item.caps})</p>
-                            <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}</p>
+                            <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}{props.item.unique ? <span>, Unique</span> : <></>}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
-                        <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)}><span className="material-symbols-outlined">add</span></Button>
+                        <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)} disabled={props.uniques.includes(props.item.name)}><span className="material-symbols-outlined">add</span></Button>
                         <img className='hover-item-card' hidden={!viewImage} src={'images/' + props.item.name.toLowerCase().replace(/[^a-zA-z\d()]|\s|-/g, '') + '.png'} alt='item'></img>
                     </div>
                 );
