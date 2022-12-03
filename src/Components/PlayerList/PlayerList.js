@@ -36,7 +36,7 @@ const PlayerList = (props) => {
         </div>
         {props.list.length > 0 ? unitList : 
         <div>
-          <p className='empty-message'>Add units to your squad!</p>
+          {props.isMobile ? <p className='empty-message'>Press the + to begin adding units to your squad!</p> : <p className='empty-message'>Add units to your squad!</p>}
         </div>}
         <DeletePopUp openDelete={props.openListDelete} setOpenListDelete={props.setOpenListDelete} deleteList={props.deleteList} unitName={''}/>
       </div>
