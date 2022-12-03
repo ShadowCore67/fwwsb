@@ -2,20 +2,16 @@
 
 A website for managing squads for use with the Fallout: Wasteland Warfare tabletop created by Modiphius.
 
-## Changelog 0.0.2:
+## Changelog 0.0.3
 
-### Changes:
-- Unit/item cards now appear when hovering over them in selection panel
-- Confirmation for deletes
-- Right-aligned delete list button
+## New:
+- Units and items now have their factions/categories/uniqueness displayed as subtext
+- Unique units/items now display the "unique" tag and will prevent the user from adding more than one
+- A message will now display when the user's squad is empty
 
-### Fixes:
-- ED-E card now displays properly
-- Duplicate button now works properly
-- Heroic option now shows up in text list
-- Desktop image list now refreshes when selecting heroic
-- Item filtering now properly works on desktop
-- Leader perks now properly show up in the perks section
+## Fixes:
+- Unit delete buttons now properly delete the associated unit
+- A lot of missing cards fixed
 
 ### Known Issues:
-- Several cards are still missing their images
+- Several units/items are still missing their images. Most of these remaining cards are due to lack of having a pdf rather than my typos.
