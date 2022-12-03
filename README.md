@@ -4,12 +4,12 @@ A website for managing squads for use with the Fallout: Wasteland Warfare tablet
 
 ## Changelog 0.0.3
 
-## New:
+### New:
 - Units and items now have their factions/categories/uniqueness displayed as subtext
 - Unique units/items now display the "unique" tag and will prevent the user from adding more than one
 - A message will now display when the user's squad is empty
 
-## Fixes:
+### Fixes:
 - Unit delete buttons now properly delete the associated unit
 - A lot of missing cards fixed
 
