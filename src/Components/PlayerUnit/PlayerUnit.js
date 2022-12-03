@@ -7,6 +7,8 @@ import DeletePopUp from '../DeletePopUp/DeletePopUp';
 
 const PlayerUnit = (props) => {
 
+    const [openUnitDelete, setOpenUnitDelete] = useState(false);
+
     function copyUnit(unit){
         let newUnit = {
             name: unit.name,
@@ -138,9 +140,9 @@ const PlayerUnit = (props) => {
             <MobilePopUp trigger={trigger} setTrigger={setTrigger}>
                 <div className='pop-up-item' onClick={() => {props.buildImageList(props.unit); props.mobileShowImages();}}>View</div>
                 <div className='pop-up-item' onClick={() => copyUnit(props.unit)}>Copy</div>
-                <div className='pop-up-item' onClick={() => props.openUnitDeleteDialog(true)}>Delete</div>
+                <div className='pop-up-item' onClick={() => setOpenUnitDelete(true)}>Delete</div>
             </MobilePopUp>
-            <Button hidden={props.isMobile} variant='danger' className='side-button' onClick={() => props.openUnitDeleteDialog(true)}><span className="material-symbols-outlined">delete</span></Button>
+            <Button hidden={props.isMobile} variant='danger' className='side-button' onClick={() => setOpenUnitDelete(true)}><span className="material-symbols-outlined">delete</span></Button>
             <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('weapons', props.unitIndex)}>Weapons</Button>
             <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('armor', props.unitIndex)}>Armor</Button>
             <Button hidden={props.isMobile} className='upgrade-button' onClick={() => props.openMenu('mods', props.unitIndex)}>Mods</Button>
@@ -164,7 +166,7 @@ const PlayerUnit = (props) => {
                 {perks}
             </div>
         </div>
-            <DeletePopUp openDelete={props.openUnitDelete} openDeleteDialog={props.openUnitDeleteDialog} removeUnit={props.removeUnit} index={props.unitIndex} unitName={props.unit.name}/>
+            <DeletePopUp openDelete={openUnitDelete} setOpenUnitDelete={setOpenUnitDelete} removeUnit={props.removeUnit} index={props.unitIndex} unitName={props.unit.name}/>
       </div>
     );
   }

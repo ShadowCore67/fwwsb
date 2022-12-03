@@ -56,3 +56,23 @@
         height: 25vh;
     }
 }
+
+.unit-title {
+    margin: 0;
+}
+
+.subtext {
+    font-size: 12px;
+    color: gray;
+}
+
+@media (max-width: 800px) {
+    .subtext {
+        font-size: 10px;
+    }
+    
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
