@@ -1,7 +1,8 @@
 import './App.css';
 import Header from './Components/Header/Header.js';
-import GameModeSelect from './Components/GameModeSelect/GameModeSelect.js';
 import BuilderContainer from './Components/BuilderContainer/BuilderContainer';
+import GameModeSelect from './Components/GameModeSelect/GameModeSelect';
+import HomeContainer from './Components/HomeContainer/HomeContainer';
 import { Toaster } from 'react-hot-toast';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
