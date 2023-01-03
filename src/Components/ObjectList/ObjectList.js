@@ -11,25 +11,25 @@ const ObjectList = (props) => {
     const [searchString, setSearchString] = useState('');
     const [type, setType] = useState('');
 
-    // useEffect(() => {
-    //     fetch("https://fwwsb-api-po8bv.ondigitalocean.app/units")
-    //         .then((response) => response.json())
-    //         .then((data) => setUnits(data));
-
-    //     fetch("https://fwwsb-api-po8bv.ondigitalocean.app/items")
-    //         .then((response) => response.json())
-    //         .then((data) => setItems(data));
-    // }, []);
-
     useEffect(() => {
-        fetch("http://localhost:8080/units")
+        fetch("https://fwwsb-api-v4ip2.ondigitalocean.app/units")
             .then((response) => response.json())
             .then((data) => setUnits(data));
 
-        fetch("http://localhost:8080/items")
+        fetch("https://fwwsb-api-v4ip2.ondigitalocean.app/items")
             .then((response) => response.json())
             .then((data) => setItems(data));
     }, []);
+
+    // useEffect(() => {
+    //     fetch("http://localhost:8080/units")
+    //         .then((response) => response.json())
+    //         .then((data) => setUnits(data));
+
+    //     fetch("http://localhost:8080/items")
+    //         .then((response) => response.json())
+    //         .then((data) => setItems(data));
+    // }, []);
 
     const weapons = ['rifle', 'pistol', 'heavy', 'melee', 'thrown'];
     const armors = ['armor', 'clothing', 'power armor'];
