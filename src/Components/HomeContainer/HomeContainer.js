@@ -62,7 +62,9 @@ const HomeContainer = () => {
         //     ]})
         // };
 
-        fetch('http://localhost:8080/squad?userId=3&squadId=13', {method: 'GET', headers: { 'Content-Type': 'application/json' }});
+        fetch('http://localhost:8080/squad?userId=3&squadId=13')
+            .then((response) => response.json())
+            .then((data) => console.log(data));
 
     }
 
