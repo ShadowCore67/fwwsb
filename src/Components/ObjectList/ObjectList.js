@@ -33,14 +33,14 @@ const ObjectList = (props) => {
 
     const weapons = ['rifle', 'pistol', 'heavy', 'melee', 'thrown'];
     const armors = ['armor', 'clothing', 'power armor'];
-    const mods = ['rifle mod', 'pistol mod', 'melee mod', 'armor mod', 'power armor mod', 'robot mod', 'creature mod'];
+    const mods = ['rifle mod', 'pistol mod', 'rifle mod,pistol mod', 'melee mod', 'armor mod', 'power armor mod', 'robot mod', 'creature mod'];
     const usables = ['food', 'alcohol', 'chem', 'gear'];
     const perks = ['perk', 'leader'];
 
     function filterItems(items, item) {
         return (items.includes(item.type) && 
                 props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && 
-                (item.type === type || type === '') && 
+                (item.type.includes(type) || type === '') && 
                 (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()));
     }
 
@@ -65,7 +65,7 @@ const ObjectList = (props) => {
             list = items.filter((perk) => filterItems(perks, perk)).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         case 'all':
-            list = items.filter((item) => (props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && (item.type === type || type === '') && (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()))).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
+            list = items.filter((item) => (props.list[props.menu.unitIndex].itemCategories.includes(item.category)) && (item.type.includes(type) || type === '') && (searchString === '' || item.name.toLowerCase().includes(searchString.toLowerCase()))).map((item, index) => <Unit type='item' item={item} key={index} unitIndex={props.menu.unitIndex} list={props.list} addItem={props.addItem} setFileName={props.setFileName} isMobile={props.isMobile} uniques={props.uniques}/>);
             break;
         default:
             break;

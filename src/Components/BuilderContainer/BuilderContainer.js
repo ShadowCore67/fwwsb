@@ -96,7 +96,7 @@ const BuilderContainer = (props) => {
         break;
       case 'rifle mod':
       case 'pistol mod':
-      case 'rifle/pistol mod':
+      case 'rifle mod,pistol mod':
       case 'heavy mod':
       case 'melee mod':
       case 'armor mod':
@@ -112,7 +112,7 @@ const BuilderContainer = (props) => {
         arr[unitIndex].consumables.push(item);
         break;
       case 'perk':
-      case 'leader perk':
+      case 'leader':
         arr[unitIndex].perks.push(item);
         break;
       default:
@@ -129,6 +129,11 @@ const BuilderContainer = (props) => {
   }
 
   function removeItem(item, unitIndex, itemIndex){
+    //remove any unique flags
+    if(uniques.includes(item.name)) {
+      setUniques(arr => arr.filter((name) => name !== item.name))
+    }
+
     let arr = [...list];
     
     switch(item.type){
@@ -146,7 +151,7 @@ const BuilderContainer = (props) => {
         break;
       case 'rifle mod':
       case 'pistol mod':
-      case 'rifle/pistol mod':
+      case 'rifle mod,pistol mod':
       case 'heavy mod':
       case 'melee mod':
       case 'armor mod':

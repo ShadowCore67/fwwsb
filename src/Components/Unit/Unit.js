@@ -38,7 +38,7 @@ const Unit = (props) => {
                 break;
             case 'rifle mod':
             case 'pistol mod':
-            case 'rifle/pistol mod':
+            case 'rifle mod,pistol mod':
             case 'heavy mod':
             case 'melee mod':
             case 'armor mod':
@@ -109,7 +109,7 @@ const Unit = (props) => {
                     <div className='object'>
                         <div onClick={() => setViewImage(true)}>
                             <p className='unit-title'>{props.item.name} ({props.item.caps})</p>
-                            <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}{props.item.unique ? <span>, Unique</span> : <></>}</p>
+                            <p className='unit-title subtext capitalize'>{props.item.type.toString().replace(/,/g, ', ')}, {props.item.category}{props.item.unique ? <span>, Unique</span> : <></>}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)} disabled={props.uniques.includes(props.item.name)}><span className="material-symbols-outlined">add</span></Button>
@@ -122,7 +122,7 @@ const Unit = (props) => {
                     <div className='object'>
                         <div onMouseEnter={() => showImageHover(true)} onMouseLeave={() => showImageHover(false)}>
                             <p className='unit-title'>{props.item.name} ({props.item.caps})</p>
-                            <p className='unit-title subtext capitalize'>{props.item.type}, {props.item.category}{props.item.unique ? <span>, Unique</span> : <></>}</p>
+                            <p className='unit-title subtext capitalize'>{props.item.type.toString().replace(/,/g, ', ')}, {props.item.category}{props.item.unique ? <span>, Unique</span> : <></>}</p>
                         </div>
                         {count > 0 ? <span>x{count}</span> : <span></span>}
                         <Button variant='secondary' className='material-button' onClick={() => props.addItem(props.item, props.unitIndex)} disabled={props.uniques.includes(props.item.name)}><span className="material-symbols-outlined">add</span></Button>
