@@ -74,6 +74,7 @@ const SearchBar = (props) => {
                         <option value='alcohol'>Alcohol</option>
                         <option value='gear'>Gear</option>
                         <option value='perk'>Perks</option>
+                        <option value='leader'>Leader Perks</option>
                       </Form.Select>
       break;
   }
