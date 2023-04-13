@@ -1,10 +1,12 @@
 import React from 'react';
+import './HomeContainer.css';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import SquadList from '../SquadList/SquadList';
 
-const HomeContainer = () => {
+const HomeContainer = (props) => {
 
     const clientId = '210523392335-i9hsmtm8uvcvukr9vifi1kvduo219e7i.apps.googleusercontent.com';
 
@@ -19,54 +21,6 @@ const HomeContainer = () => {
          };
          gapi.load('client:auth2', initClient);
     });
-
-    function saveTest() {
-        // const requestOptions = {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({squadId: null, name: 'test squad', type: 'battle', caps: 69, userId: 3, units: [
-        //         {
-        //             unitId: 12,
-        //             name: 'wqefwf',
-        //             caps: 0,
-        //             card: 'fwfwfe',
-        //             heroic: true,
-        //             factions: [],
-        //             itemCategories: [],
-        //             items: [
-        //                 {
-        //                     itemId: 99,
-        //                     quantity: 3
-        //                 },
-        //                 {
-        //                     itemId: 104,
-        //                     quantity: 1
-        //                 },
-        //             ]
-        //         },
-        //         {
-        //             unitId: 17,
-        //             name: 'llllll',
-        //             caps: 0,
-        //             card: 'fwfwfe',
-        //             heroic: false,
-        //             factions: [],
-        //             itemCategories: [],
-        //             items: [
-        //                 {
-        //                     itemId: 117,
-        //                     quantity: 1
-        //                 }
-        //             ]
-        //         },
-        //     ]})
-        // };
-
-        fetch('http://localhost:8080/squad?userId=3&squadId=13')
-            .then((response) => response.json())
-            .then((data) => console.log(data));
-
-    }
 
     const onSuccess = (res) => {
         // console.log('success:', res.getAuthResponse().id_token);
@@ -86,9 +40,14 @@ const HomeContainer = () => {
     };
 
     return (
-        <div>
-            <p>HomeContainer</p>
-            {profile ? 
+        <div className='home-container'>
+            <div className='build-select'>
+                <Button>Create Squad</Button>
+            </div>
+            <div className="home-item">
+                <SquadList userId={props.userId}/>
+            </div>
+            {/* {profile ? 
             <div>
                 <p>{profile.givenName}</p>
                 <Button onClick={() => saveTest()}>Do something!</Button>
@@ -100,7 +59,9 @@ const HomeContainer = () => {
                 onFailure={onFailure} 
                 cookiePolicy={'single_host_origin'} 
                 isSignedIn={true}
-            />}
+            />} */}
         </div>
     );
 }
+
+export default HomeContainer;

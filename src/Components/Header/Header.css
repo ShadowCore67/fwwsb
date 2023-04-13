@@ -4,8 +4,10 @@
     background-color: black;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    display: grid;
+    grid-template-columns: 80% 20%;
 }
 
 @media (max-width: 800px) {
@@ -24,8 +26,19 @@
     margin: 0px;
     color: white;
     text-decoration: none;
+    text-align: left;
 }
 
 .title:hover {
     color: white;
+}
+
+.header-button {
+    width: fit-content;
+    font-size: 20px;
+}
+
+.button-div {
+    display: flex;
+    justify-content: flex-end;
 }
